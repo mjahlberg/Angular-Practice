@@ -1,22 +1,31 @@
 // name our angular app
-angular.module('firstApp', []) 
+var app = angular.module('App', [])
 
-.controller('mainController', function() {
-    
-    // bind this to vm (view-model)
-	var vm = this;
-    
-    // define variables and objects on this
-    // this lets them be available to our views
+.directive('modalDialog', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      show: '='
+    },
+    replace: true, // Replace with the template below
+    transclude: true, // we want to insert custom content inside the directive
+    link: function(scope, element, attrs) {
+      scope.dialogStyle = {};
+      if (attrs.width)
+        scope.dialogStyle.width = attrs.width;
+      if (attrs.height)
+        scope.dialogStyle.height = attrs.height;
+      scope.hideModal = function() {
+        scope.show = false;
+      };
+    },
+    template: '<div class="ng-modal" ng-show="show"><div class="ng-modal-overlay" ng-click="hideModal()"></div><div class="ng-modal-dialog" ng-style="dialogStyle"><div class="ng-modal-close" ng-click="hideModal()">X</div><div class="ng-modal-dialog-content" ng-transclude></div></div></div>'
+  }
+})
 
-	// define a basic variable
-    vm.message = 'Hey there! Come and see how good I look!';
-    
-    // define a list of items
-    vm.computers = [
-        { name: 'Macbook Pro', color: 'Silver', nerdness: 7 },
-        { name: 'Yoga 2 Pro', color: 'Gray', nerdness: 6 },
-        { name: 'Chromebook', color: 'Black', nerdness: 5 }
-	]; 
-	
-});
+.controller('MyCtrl', function($scope) {
+  $scope.modalShown = false;
+  $scope.toggleModal = function() {
+    $scope.modalShown = !$scope.modalShown;
+  }
+})

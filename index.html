@@ -7,25 +7,27 @@
 		<!--CSS-->
 		<!--load bootstrap and our stylesheet -->
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/\css/bootstrap.min.css">
-		<style>
-			body { padding-top: 50px; }
-		</style>
+		<link rel="stylesheet" type="text/css" href="application.css">
+
 
 		<!--JS-->
 		<!--load angular and our custom application -->
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 		<script src="app.js"></script>
+
 	</head>
 
-	<body class="container" ng-app="firstApp" ng-controller="mainController as main">
+	<body>
+		<div ng-app="App">
+			<div ng-controller="MyCtrl">	
+				<button ng-click='toggleModal()'>Open Modal Dialog</button>
+				<modal-dialog show='modalShown' width='750px' height='60%'>
+  					<p>Modal Content Goes here<p>
+				</modal-dialog>
+			</div>
+		</div>
 
-    <div class="jumbotron">
-      
-      <!-- display this message -->
-      <h2>This is my message</h2>
-      {{main.message}}
-
-    </div>
+	<!-- <dialogue first="matt"></dialogue> -->
 
 	</body>
 </html>
