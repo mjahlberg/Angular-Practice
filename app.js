@@ -23,9 +23,54 @@ var app = angular.module('App', [])
   }
 })
 
-.controller('MyCtrl', function($scope) {
-  $scope.modalShown = false;
-  $scope.toggleModal = function() {
-    $scope.modalShown = !$scope.modalShown;
-  }
+.directive('modalRepeat', function () {
+    return {          
+        restrict: 'E',
+        replace: true,
+        transclude: true,
+        template:'<div class="wrapper"><div class="videobox" ng-click="toggleModal()" style="list-style: none;" ng-repeat="thing in things"><img ng-src="{{thing.img}}"><figcaption>{{thing.company}}</figcaption></div></div>'
+    }
 })
+
+.controller('MyCtrl', function($scope) {
+
+    $scope.modalShown = false;
+    $scope.toggleModal = function() {
+        $scope.modalShown = !$scope.modalShown;
+    };
+
+    $scope.things = [ 
+        {    
+            "id" : 1,
+            "img" : "http://i.imgur.com/kwvK3Ct.png",
+            "company" : "Spotify"
+        },
+        {   
+            "id" : 2, 
+            "img" : "http://i.imgur.com/zdHbBiq.png?1",
+            "company" : "The Duck Brand"
+        },
+        {    
+            "id" : 3,
+            "img" : "http://i.imgur.com/gk8nyyK.png",
+            "company" : "Frito-Lay"
+        },
+        {    
+            "id" : 4,
+            "img" : "http://i.imgur.com/eraWw1c.png",
+            "company" : "Pantene"
+        },
+        {   
+            "id" : 5, 
+            "img" : "http://i.imgur.com/Y3jQ76G.png?1",
+            "company" : "Anheuser-Busch InBev"
+        },
+        {    
+            "id" : 6,
+            "img" : "http://i.imgur.com/lNuhA5F.png?1",
+            "company" : "Tongal"
+        }
+    ];
+})
+
+

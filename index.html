@@ -8,7 +8,8 @@
 		<!--load bootstrap and our stylesheet -->
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/\css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="application.css">
-
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 		<!--JS-->
 		<!--load angular and our custom application -->
@@ -18,16 +19,26 @@
 	</head>
 
 	<body>
-		<div ng-app="App">
-			<div ng-controller="MyCtrl">	
-				<button ng-click='toggleModal()'>Open Modal Dialog</button>
-				<modal-dialog show='modalShown' width='750px' height='60%'>
-  					<p>Modal Content Goes here<p>
-				</modal-dialog>
-			</div>
-		</div>
 
-	<!-- <dialogue first="matt"></dialogue> -->
+		<div ng-app="App">
+			<div ng-controller="MyCtrl as main">	
+
+					<modal-repeat >
+				
+					</modal-repeat>
+	
+
+				<modal-dialog show='modalShown' width='600px' height='60%'>
+  						<div>
+  							<img ng-src="http://i.imgur.com/kwvK3Ct.png">
+  							<figcaption>Spotify</figcaption>
+  						</div>
+				</modal-dialog>
+				
+			</div>
+			</div>
+
+		</div>	
 
 	</body>
 </html>
