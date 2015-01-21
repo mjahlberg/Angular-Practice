@@ -1,4 +1,3 @@
-// name our angular app
 var app = angular.module('App', [])
 
 .directive('modalDialog', function() {
@@ -7,8 +6,8 @@ var app = angular.module('App', [])
     scope: {
       show: '='
     },
-    replace: true, // Replace with the template below
-    transclude: true, // we want to insert custom content inside the directive
+    replace: true,
+    transclude: true,
     link: function(scope, element, attrs) {
       scope.dialogStyle = {};
       if (attrs.width)
@@ -19,7 +18,8 @@ var app = angular.module('App', [])
         scope.show = false;
       };
     },
-    template: '<div class="ng-modal" ng-show="show"><div class="ng-modal-overlay" ng-click="hideModal()"></div><div class="ng-modal-dialog" ng-style="dialogStyle"><div class="ng-modal-close" ng-click="hideModal()">X</div><div class="ng-modal-dialog-content" ng-transclude></div></div></div>'
+    // getting error for "no root element" to use partial template (modal-dialog.html) here
+    template: '<div class="ng-modal" ng-show="show"><div class="ng-modal-overlay" ng-click="hideModal()"></div><div class="ng-modal-dialog" ng-style="dialogStyle"><div class="ng-modal-close" ng-click="hideModal()">X</div><div><img ng-src="http://i.imgur.com/kwvK3Ct.png"><figcaption>Spotify</figcaption></div><div class="ng-modal-dialog-content" ng-transclude></div></div></div>'
   }
 })
 
@@ -27,7 +27,7 @@ var app = angular.module('App', [])
     return {          
         restrict: 'E',
         replace: true,
-        transclude: true,
+        // getting error for "no root element" to use partial template (modal-repeat.html)here
         template:'<div class="wrapper"><div class="videobox" ng-click="toggleModal()" style="list-style: none;" ng-repeat="thing in things"><img ng-src="{{thing.img}}"><figcaption>{{thing.company}}</figcaption></div></div>'
     }
 })
@@ -39,8 +39,10 @@ var app = angular.module('App', [])
         $scope.modalShown = !$scope.modalShown;
     };
 
+    // added list inside the same controller so the list and the function for calling the modal can be used by both directives
     $scope.things = [ 
-        {    
+        {  
+        // Tried to add an id to each one to be able to call a specific img in modal but not successful yet  
             "id" : 1,
             "img" : "http://i.imgur.com/kwvK3Ct.png",
             "company" : "Spotify"
