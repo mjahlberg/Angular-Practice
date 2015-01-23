@@ -24,9 +24,18 @@
 			<div ng-controller="MyCtrl">	
 
 				<modal-repeat>
+
 				</modal-repeat>
 
-				<modal-dialog show='modalShown' width='600px' height='60%'>
+					
+				<!-- 	<div class="wrapper">
+						<div class="videobox" ng-click="toggleModal()" style="list-style: none;" ng-repeat="thing in things">
+					</div> -->
+
+				<modal-dialog show='modalShown' width='750px' height='90%'>
+						<div ng-show="editing">
+					       <img ng-src="{{editing.img}}"/>
+					    </div>
 				</modal-dialog>
 				
 			</div>

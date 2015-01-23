@@ -1,17 +1,36 @@
-<div class="ng-modal" ng-show="show">
-
+<!--<div class="ng-modal" ng-show="show">
 	<div class="ng-modal-overlay" ng-click="hideModal()"></div>
-
 	<div class="ng-modal-dialog" ng-style="dialogStyle">
-
 		<div class="ng-modal-close" ng-click="hideModal()">X</div>
-
-		<div>
-  			<img ng-src="http://i.imgur.com/kwvK3Ct.png">
-				<figcaption>Spotify</figcaption>
-  			</div>
-
+		<div class="modal-img">
+			<div> hi</div>
+			<figcaption>Spotifyy</figcaption>
+		</div>
 		<div class="ng-modal-dialog-content"></div>
-		
+	</div>
+</div>-->
+
+<div class="ng-modal" ng-show="show">
+	<div class="ng-modal-overlay" ng-click="hideModal()"></div>
+	  <div class="ng-modal-dialog" ng-style="dialogStyle">
+	  	<div class="ng-modal-close" ng-click="hideModal()">X</div>
+	  	<div class="modal-img">
+	  		<div ng-repeat="thing in things">{{thing.id}}</div>
+	  	    <div class="ng-modal-dialog-content"></div>
+	  </div>
 	</div>
 </div>
+
+'<div class="ng-modal" ng-show="show">
+	<div class="ng-modal-overlay" ng-click="hideModal()"></div>
+	<div class="ng-modal-dialog" ng-style="dialogStyle">
+		<div class="ng-modal-close" ng-click="hideModal()">X</div>
+	</div>
+	<div class="ng-modal-dialog-content"></div>
+</div>
+</div>
+</div>'
+
+
+
+
